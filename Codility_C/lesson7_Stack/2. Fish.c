@@ -1,17 +1,17 @@
-typedef struct stack{
+typedef stack{
     int* A;
     int top;
 } Fish;
 
-void push(Fish* fish, int value){
-    fish->A[fish->top] = value;
-    fish->top ++;
+void push(int* Fish, int value){
+    Fish->A[Fish-top] = value;
+    Fish->top ++;
 }
 
-int pop(Fish* fish){
-    if(fish->top > 0){
-        fish->top--;
-        return fish->A[fish->top];
+int pop(int* Fish){
+    if(Fish->top > 0){
+        Fish->top--;
+        return Fish->A[Fish->top];
     } else 
         return NULL;
 }
@@ -34,15 +34,21 @@ int solution(int A[], int B[], int N) {
     fish->top = 0;
     while(idx < N){
         if(B[idx] == 0){
-            while(fish->top > 0){
-                dead_count++;
-                int fish_live = fishEat(fish, fish->A[fish->top - 1], A[idx]);
-                if(fish_live)
-                    break;
-            }
+            if(fish->top > 0){
+                while(fish->top > 0){
+                    int fish_live = fishEat(fish, fish->A[fish->top - 1], A[idx]);
+                    if(fish_live)
+                        break;
+                }
+
+            } else    
+                continue;
         } else  
             push(fish, A[idx]);
         idx++;
-    }  
-    return N - dead_count;
+    }
+
+            
+
+            
 }
