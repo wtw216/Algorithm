@@ -1,5 +1,9 @@
 // you can write to stdout for debugging purposes, e.g.
 // printf("this is a debug message\n");
+/* Have bugs
+input: random(0,1) + 50000 * [0] + random(0, 1), length = ~100,000 
+output:✘WRONG ANSWER got 0 expected 59478
+*/
 int getLeader(int A[], int N) {
     // write your code in C99 (gcc 4.8.2)
     int start = 0;
